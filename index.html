@@ -149,10 +149,45 @@ document.addEventListener('keydown',event=>{
 });
 try{if(sessionStorage.getItem('road-to-benq-unlocked')==='1')unlockApp()}catch(e){}
 
-const GOAL=2600, KEY='road-to-benq-deposits-v1';
+const GOAL=2600, KEY='road-to-benq-deposits-v1', DB_NAME='road-to-benq-storage', DB_STORE='data';
 const money=n=>new Intl.NumberFormat('pl-PL',{style:'currency',currency:'PLN'}).format(n);
-const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}};
-let deposits=read();
+let deposits=[];
+function openSavingsDB(){
+ return new Promise((resolve,reject)=>{
+  if(!('indexedDB' in window)){reject(new Error('IndexedDB niedostępne'));return}
+  const request=indexedDB.open(DB_NAME,1);
+  request.onupgradeneeded=()=>{const db=request.result;if(!db.objectStoreNames.contains(DB_STORE))db.createObjectStore(DB_STORE)};
+  request.onsuccess=()=>resolve(request.result);
+  request.onerror=()=>reject(request.error||new Error('Nie można otworzyć pamięci'));
+ });
+}
+async function loadDeposits(){
+ try{
+  const db=await openSavingsDB();
+  const stored=await new Promise((resolve,reject)=>{
+   const tx=db.transaction(DB_STORE,'readonly'),req=tx.objectStore(DB_STORE).get(KEY);
+   req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);
+  });
+  db.close();
+  if(Array.isArray(stored)){deposits=stored;return}
+ }catch(err){console.warn('Odczyt IndexedDB:',err)}
+ try{const old=JSON.parse(localStorage.getItem(KEY)||'[]');deposits=Array.isArray(old)?old:[]}catch{deposits=[]}
+}
+async function saveDeposits(){
+ const snapshot=JSON.stringify(deposits);
+ let idbSaved=false;
+ try{
+  const db=await openSavingsDB();
+  await new Promise((resolve,reject)=>{
+   const tx=db.transaction(DB_STORE,'readwrite');
+   tx.objectStore(DB_STORE).put(JSON.parse(snapshot),KEY);
+   tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);
+  });
+  db.close();idbSaved=true;
+ }catch(err){console.warn('Zapis IndexedDB:',err)}
+ try{localStorage.setItem(KEY,snapshot)}catch(err){if(!idbSaved)throw err}
+ if(!idbSaved && !localStorage.getItem(KEY))throw new Error('Nie udało się zapisać wpłat');
+}
 const $=id=>document.getElementById(id);
 const today=new Date(); $('date').value=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
 function render(animate=false){
@@ -172,17 +207,15 @@ $('feed').addEventListener('click',e=>{
  if(!Number.isInteger(index)||index<0||index>=deposits.length)return;
  if(!confirm('Usunąć tę wpłatę? Kwota zostanie odjęta od oszczędności.'))return;
  const removed=deposits.splice(index,1)[0];
- try{localStorage.setItem(KEY,JSON.stringify(deposits));render(true);$('toast').textContent='Wpłata usunięta';$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}
- catch{deposits.splice(index,0,removed);alert('Nie udało się zapisać zmiany.');render()}
+ saveDeposits().then(()=>{render(true);$('toast').textContent='Wpłata usunięta';$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}).catch(()=>{deposits.splice(index,0,removed);alert('Nie udało się zapisać zmiany.');render()})
 });
 $('depositForm').addEventListener('submit',e=>{
  e.preventDefault();const amount=Math.round(Number($('amount').value)*100)/100;
  if(!Number.isFinite(amount)||amount<=0){return}
- deposits.push({amount,date:$('date').value});
- try{localStorage.setItem(KEY,JSON.stringify(deposits));render(true);$('amount').value='';$('toast').textContent='Wpłata zapisana';$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}
- catch{alert('Nie udało się zapisać wpłaty. Sprawdź pamięć przeglądarki.')}
+ const deposit={amount,date:$('date').value};deposits.push(deposit);
+ saveDeposits().then(()=>{render(true);$('amount').value='';$('toast').textContent='Wpłata zapisana';$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}).catch(()=>{deposits.pop();alert('Nie udało się zapisać wpłaty. Spróbuj ponownie.');render()})
 });
-render();
+loadDeposits().then(()=>render()).catch(()=>render());
 if('serviceWorker' in navigator && location.protocol.startsWith('http')) window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
 </script>
 </body>
