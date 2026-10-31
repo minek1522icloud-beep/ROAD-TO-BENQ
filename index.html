@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080b0a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ROAD TO BENQ">
+  <meta name="description" content="Twój cel oszczędnościowy: BenQ ZOWIE XL2566X+ 400 Hz.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="https://zowie.benq.eu/content/dam/game/en/product/monitor/xl2566x-plus/gallery/xl2566x-plus-01.png">
+  <title>ROAD TO BENQ</title>
+  <style>
+    :root{color-scheme:dark;--bg:#080b0a;--panel:#111715;--panel2:#151d19;--line:#25342d;--muted:#8b9a91;--white:#f4f8f5;--mint:#b6ff68;--mint2:#7ce7b1}
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(ellipse at 50% -12%,#20352a 0%,#0b100d 42%,var(--bg) 75%);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif;min-height:100vh;padding:env(safe-area-inset-top) 16px calc(28px + env(safe-area-inset-bottom))}
+    .wrap{max-width:520px;margin:0 auto}.top{display:flex;justify-content:space-between;align-items:center;padding:18px 2px 16px}.brand{font-size:12px;letter-spacing:2.5px;font-weight:900}.brand span{color:var(--mint)}.status{font-size:10px;color:var(--mint2);letter-spacing:1.4px;border:1px solid #36503d;border-radius:99px;padding:7px 10px}
+    .eyebrow{font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:800}.hero{background:linear-gradient(145deg,#17231c,#101613 70%);border:1px solid #2b3b31;border-radius:26px;padding:19px 18px 16px;overflow:hidden;position:relative;box-shadow:0 18px 55px #0006}.hero:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:#a7ff6810;filter:blur(30px);right:-90px;top:-95px}.hero h1{font-size:27px;line-height:1.05;margin:9px 0 5px;letter-spacing:-.8px}.hero p{margin:0;color:#a7b5ac;font-size:12px}.monitor{margin:17px -3px 8px;display:flex;align-items:center;justify-content:center;min-height:190px;border-radius:18px;background:radial-gradient(ellipse at 50% 60%,#324b3b 0%,#1a2820 45%,#111815 76%);overflow:hidden}.monitor img{display:block;width:100%;max-width:410px;height:205px;object-fit:contain;filter:drop-shadow(0 14px 17px #0009)}.model{display:flex;justify-content:space-between;align-items:center;gap:8px}.model strong{font-size:13px}.hz{font-size:10px;color:var(--mint);font-weight:900;letter-spacing:1px;border:1px solid #526d3c;padding:6px 9px;border-radius:8px;white-space:nowrap}
+    .amount{margin-top:20px}.amount .value{font-size:42px;font-weight:850;letter-spacing:-1.8px;margin-top:5px}.amount .value small{font-size:18px;color:#aab9af;letter-spacing:0}.track{height:10px;background:#29342d;border-radius:20px;margin:15px 0 9px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--mint2),var(--mint));border-radius:20px;transition:width .35s}.progressline{display:flex;justify-content:space-between;color:#aab8ae;font-size:11px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.stat{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:14px}.stat .num{font-size:20px;font-weight:800;margin-top:7px}.stat .hint{font-size:10px;color:var(--muted);margin-top:4px}.section{margin-top:19px}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:0 2px 10px}.sectionhead h2{font-size:14px;margin:0}.sectionhead span{font-size:10px;color:var(--muted)}.formcard{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:15px}.field{display:block;font-size:11px;color:#a9b7ae;margin:0 0 7px}.input{width:100%;border:1px solid #2c3b32;border-radius:12px;background:#0b100d;color:white;padding:14px;font-size:16px;outline:none;margin-bottom:12px}.input:focus{border-color:#9bdc67}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:10px}.add{width:100%;border:0;border-radius:13px;padding:15px;background:linear-gradient(100deg,#baff72,#86e9ae);color:#102014;font-weight:900;font-size:14px;cursor:pointer}.add:active{transform:scale(.99)}.feed{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}.entry{padding:13px 14px;display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #25312a}.entry:last-child{border-bottom:0}.entry strong{font-size:13px}.entry small{display:block;color:var(--muted);font-size:10px;margin-top:4px}.entry b{color:var(--mint);font-size:14px;white-space:nowrap}.empty{padding:18px;color:var(--muted);font-size:12px;text-align:center}.foot{text-align:center;color:#66766c;font-size:10px;line-height:1.6;padding:19px 8px 4px}.foot a{color:#a5d98b;text-decoration:none}.toast{position:fixed;bottom:calc(22px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,20px);opacity:0;background:#d0ff9a;color:#142015;padding:11px 16px;border-radius:99px;font-weight:800;font-size:12px;transition:.25s;pointer-events:none;white-space:nowrap}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(min-width:520px){body{padding-top:24px}.hero{padding:22px}.monitor{min-height:225px}.monitor img{height:235px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top"><div class="brand">ROAD <span>TO</span> BENQ</div><div class="status">● TWÓJ CEL</div></header>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">MISJA · NOWY MONITOR</div>
+      <h1>Cel. Oszczędzaj.<br>Odblokuj 400 Hz.</h1>
+      <p>Każda wpłata przybliża Cię do nowego setupu.</p>
+      <div class="monitor"><img src="https://image.benq.com/is/image/benqco/Project%20Blender-official-monitor-xl2566x-plus?%24ResponsivePreset%24=&fmt=png-alpha" alt="Monitor BenQ ZOWIE XL2566X+ 400 Hz" onerror="this.style.display='none';document.getElementById('fallback').style.display='block'"><div id="fallback" style="display:none;text-align:center;color:#b6ff68;font-weight:800;font-size:13px">ZOWIE<br><span style="font-size:34px">400 Hz</span></div></div>
+      <div class="model"><strong>BenQ ZOWIE XL2566X+</strong><span class="hz">400 HZ · DYAC 2</span></div>
+    </section>
+    <section class="amount">
+      <div class="eyebrow">TWOJE OSZCZĘDNOŚCI</div>
+      <div class="value" id="saved">0,00 zł</div>
+      <div class="track"><div class="fill" id="fill"></div></div>
+      <div class="progressline"><span id="percent">0% celu</span><span id="remaining">Brakuje 2 600,00 zł</span></div>
+    </section>
+    <section class="stats">
+      <div class="stat"><div class="eyebrow">CEL</div><div class="num">2 600 zł</div><div class="hint">BenQ ZOWIE XL2566X+</div></div>
+      <div class="stat"><div class="eyebrow">WPŁATY</div><div class="num" id="count">0</div><div class="hint">Zapisanych wpłat</div></div>
+      <div class="stat"><div class="eyebrow">ŚREDNIA WPŁATA</div><div class="num" id="average">0,00 zł</div><div class="hint">Na podstawie wpłat</div></div>
+      <div class="stat"><div class="eyebrow">DO GWIAZDKI</div><div class="num" id="days">—</div><div class="hint">Dni do 24 grudnia 2026</div></div>
+    </section>
+    <section class="section">
+      <div class="sectionhead"><h2>Dodaj wpłatę</h2><span>MAŁY KROK = POSTĘP</span></div>
+      <form class="formcard" id="depositForm">
+        <label class="field" for="amount">Kwota (zł)</label>
+        <input class="input" id="amount" name="amount" type="number" min="0.01" max="2600" step="0.01" placeholder="Np. 50,00" required inputmode="decimal">
+        <div class="twocol">
+          <div><label class="field" for="date">Data</label><input class="input" id="date" type="date" required></div>
+          <div><label class="field" for="source">Źródło</label><input class="input" id="source" maxlength="32" placeholder="Np. kieszonkowe"></div>
+        </div>
+        <button class="add" type="submit">＋ ZAPISZ WPŁATĘ</button>
+      </form>
+    </section>
+    <section class="section">
+      <div class="sectionhead"><h2>Ostatnie wpłaty</h2><span id="totalLabel">0 WPŁAT</span></div>
+      <div class="feed" id="feed"><div class="empty">Tutaj pojawią się Twoje wpłaty.</div></div>
+    </section>
+  </main>
+  <footer class="foot">ROAD TO BENQ · Twoje dane pozostają w pamięci tej przeglądarki na tym urządzeniu.<br><a href="https://zowie.benq.eu/pl-pl/monitor/xl2566x-plus.html" target="_blank" rel="noopener">Oficjalna strona monitora</a></footer>
+</div>
+<div class="toast" id="toast">Wpłata zapisana</div>
+<script>
+const GOAL=2600, KEY='road-to-benq-deposits-v1';
+const money=n=>new Intl.NumberFormat('pl-PL',{style:'currency',currency:'PLN'}).format(n);
+const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}};
+let deposits=read();
+const $=id=>document.getElementById(id);
+const today=new Date(); $('date').value=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
+function render(){
+ const total=deposits.reduce((s,d)=>s+d.amount,0), pct=Math.min(100,total/GOAL*100), left=Math.max(0,GOAL-total);
+ $('saved').textContent=money(total);$('fill').style.width=pct+'%';$('percent').textContent=(total>=GOAL?'CEL OSIĄGNIĘTY':pct.toFixed(1).replace('.',',')+'% celu');$('remaining').textContent=left===0?'Gotowe!': 'Brakuje '+money(left);
+ $('count').textContent=deposits.length;$('average').textContent=money(deposits.length?total/deposits.length:0);$('totalLabel').textContent=deposits.length+' WPŁAT';
+ const christmas=new Date(2026,11,24);const now=new Date();now.setHours(0,0,0,0);$('days').textContent=Math.max(0,Math.ceil((christmas-now)/86400000));
+ const recent=[...deposits].reverse().slice(0,5);
+ $('feed').innerHTML=recent.length?recent.map(d=>'<div class="entry"><div><strong>'+escapeHtml(d.source||'Wpłata')+'</strong><small>'+new Date(d.date+'T12:00:00').toLocaleDateString('pl-PL')+'</small></div><b>+'+money(d.amount)+'</b></div>').join(''):'<div class="empty">Tutaj pojawią się Twoje wpłaty.</div>';
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+$('depositForm').addEventListener('submit',e=>{
+ e.preventDefault();const amount=Math.round(Number($('amount').value)*100)/100;
+ if(!Number.isFinite(amount)||amount<=0){return}
+ deposits.push({amount,date:$('date').value,source:$('source').value.trim()||'Wpłata'});
+ try{localStorage.setItem(KEY,JSON.stringify(deposits));render();$('amount').value='';$('source').value='';$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}
+ catch{alert('Nie udało się zapisać wpłaty. Sprawdź pamięć przeglądarki.')}
+});
+render();
+if('serviceWorker' in navigator && location.protocol.startsWith('http')) window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
+</script>
+</body>
+</html>
