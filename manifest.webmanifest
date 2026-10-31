@@ -1,0 +1,11 @@
+{
+  "name": "ROAD TO BENQ",
+  "short_name": "ROAD TO BENQ",
+  "description": "Cel oszczędnościowy na monitor BenQ ZOWIE XL2566X+ 400 Hz",
+  "lang": "pl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080b0a",
+  "theme_color": "#080b0a"
+}
